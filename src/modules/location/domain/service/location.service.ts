@@ -3,18 +3,18 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
-} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Building } from 'src/entities/building.entity';
-import { Location as LocationEntity } from '../../../entities/location.entity';
+} from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Building } from "src/entities/building.entity";
+import { Location as LocationEntity } from "../../../../entities/location.entity";
 import {
   CreateLocationDto,
   LocationOpenDays,
-} from './dto/create-location.dto';
-import { LocationResponseDto } from './dto/location-response.dto';
-import { UpdateLocationDto } from './dto/update-location.dto';
-import { LocationRepository } from './location.repository';
+} from "../../api/http/dto/create-location.dto";
+import { LocationResponseDto } from "../../api/http/dto/location-response.dto";
+import { UpdateLocationDto } from "../../api/http/dto/update-location.dto";
+import { LocationRepository } from "../../database/repository/location.repository";
 
 type LocationTreeNode = LocationEntity & { children: LocationTreeNode[] };
 
@@ -75,15 +75,15 @@ export class LocationService {
     const saved = await this.locationRepository.save(location);
     const withRelations = await this.locationRepository.findOne({
       where: { id: saved.id },
-      relations: ['parent', 'children', 'building'],
+      relations: ["parent", "children", "building"],
     });
     return this.toResponseDto(withRelations!);
   }
 
   async findAllTree(): Promise<LocationResponseDto[]> {
     const all = await this.locationRepository.find({
-      relations: ['parent', 'building'],
-      order: { locationNumber: 'ASC' },
+      relations: ["parent", "building"],
+      order: { locationNumber: "ASC" },
     });
 
     const byId = new Map<string, LocationTreeNode>();
@@ -114,7 +114,7 @@ export class LocationService {
   async findOne(id: string): Promise<LocationResponseDto> {
     const location = await this.locationRepository.findOne({
       where: { id },
-      relations: ['parent', 'children', 'building'],
+      relations: ["parent", "children", "building"],
     });
     if (!location) {
       throw new NotFoundException(`Location ${id} not found`);
@@ -128,7 +128,7 @@ export class LocationService {
   ): Promise<LocationResponseDto> {
     const location = await this.locationRepository.findOne({
       where: { id },
-      relations: ['parent', 'children', 'building'],
+      relations: ["parent", "children", "building"],
     });
     if (!location) {
       throw new NotFoundException(`Location ${id} not found`);
@@ -145,19 +145,19 @@ export class LocationService {
 
     if (dto.parentId !== undefined) {
       if (dto.parentId === id) {
-        throw new BadRequestException('Location cannot be its own parent');
+        throw new BadRequestException("Location cannot be its own parent");
       }
       if (dto.parentId) {
         let currentId: string | null = dto.parentId;
         while (currentId) {
           if (currentId === id) {
             throw new BadRequestException(
-              'Parent would create a cycle in the location tree',
+              "Parent would create a cycle in the location tree",
             );
           }
           const parent = await this.locationRepository.findOne({
             where: { id: currentId },
-            relations: ['parent'],
+            relations: ["parent"],
           });
           currentId = parent?.parent?.id ?? null;
         }
@@ -200,7 +200,7 @@ export class LocationService {
     const saved = await this.locationRepository.save(location);
     const withRelations = await this.locationRepository.findOne({
       where: { id: saved.id },
-      relations: ['parent', 'children', 'building'],
+      relations: ["parent", "children", "building"],
     });
     return this.toResponseDto(withRelations!);
   }

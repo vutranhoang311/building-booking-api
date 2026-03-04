@@ -4,8 +4,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { LoggerModule } from "nestjs-pino";
 import { getDatabaseConfig } from "./config/database.config";
 import { pinoLoggerOptions } from "./config/logger.config";
-import { BookingModule } from "./modules/controllers/booking/booking.module";
-import { LocationModule } from "./modules/controllers/location/location.module";
+import { BookingModule } from "./modules/booking/booking.module";
+import { LocationModule } from "./modules/location/location.module";
+
 
 @Module({
   imports: [
@@ -21,4 +22,4 @@ import { LocationModule } from "./modules/controllers/location/location.module";
     BookingModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }

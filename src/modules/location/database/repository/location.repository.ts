@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { FindOneOptions, Repository } from 'typeorm';
-import { Location } from '../../../entities/location.entity';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { FindOneOptions, Repository } from "typeorm";
+import { Location } from "../../../../entities/location.entity";
 
 @Injectable()
 export class LocationRepository {
@@ -14,7 +14,10 @@ export class LocationRepository {
     return this.repo.findOne(options);
   }
 
-  find(options: { relations?: string[]; order?: { locationNumber?: 'ASC' } }) {
+  find(options: {
+    relations?: string[];
+    order?: { locationNumber?: "ASC" };
+  }) {
     return this.repo.find(options);
   }
 

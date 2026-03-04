@@ -1,5 +1,5 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { LocationOpenDays } from './create-location.dto';
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
+import { LocationOpenDays } from "./create-location.dto";
 
 export class LocationResponseDto {
   @ApiProperty()
@@ -24,13 +24,13 @@ export class LocationResponseDto {
   capacity?: number;
 
   @ApiPropertyOptional({
-    description: 'Daily open time range in HH:mm-HH:mm',
+    description: "Daily open time range in HH:mm-HH:mm",
   })
   openTime?: string;
 
   @ApiPropertyOptional({
     enum: LocationOpenDays,
-    description: 'Allowed booking days (weekday pattern)',
+    description: "Allowed booking days (weekday pattern)",
   })
   openDays?: LocationOpenDays;
 

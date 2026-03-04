@@ -10,7 +10,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { IsTimeRange } from "../../../../validations/is-time-range.validator";
+import { IsTimeRange } from "../../../../../validations/is-time-range.validator";
 
 export enum LocationOpenDays {
   MON_FRI = "MON_FRI",
@@ -88,3 +88,4 @@ export class CreateLocationDto {
   @IsString()
   description?: string;
 }
+

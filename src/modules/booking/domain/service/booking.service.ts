@@ -6,11 +6,11 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import dayjs from "dayjs";
 import { Repository } from "typeorm";
-import { Booking } from "../../../entities/booking.entity";
-import { Location } from "../../../entities/location.entity";
-import { LocationOpenDays } from "../location/dto/create-location.dto";
-import { BookingResponseDto } from "./dto/booking-response.dto";
-import { CreateBookingDto } from "./dto/create-booking.dto";
+import { Booking } from "src/entities/booking.entity";
+import { Location } from "src/entities/location.entity";
+import { LocationOpenDays } from "src/modules/location/api/http/dto/create-location.dto";
+import { BookingResponseDto } from "src/modules/booking/api/http/dto/booking-response.dto";
+import { CreateBookingDto } from "src/modules/booking/api/http/dto/create-booking.dto";
 
 @Injectable()
 export class BookingService {
@@ -19,7 +19,7 @@ export class BookingService {
     private readonly bookingRepository: Repository<Booking>,
     @InjectRepository(Location)
     private readonly locationRepository: Repository<Location>,
-  ) {}
+  ) { }
 
   async create(dto: CreateBookingDto): Promise<BookingResponseDto> {
     const location = await this.locationRepository.findOne({
