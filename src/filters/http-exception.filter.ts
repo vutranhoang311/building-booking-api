@@ -4,8 +4,7 @@ import {
   ExceptionFilter,
   HttpException,
   HttpStatus,
-} from '@nestjs/common';
-import { Logger } from '@nestjs/common';
+ Logger } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Catch()

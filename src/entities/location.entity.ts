@@ -8,6 +8,7 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+
 import { Booking } from './booking.entity';
 import { Building } from './building.entity';
 
@@ -65,4 +66,4 @@ export class Location {
   updatedAt!: Date;
 }
 
- 
+

@@ -32,6 +32,12 @@ module.exports = {
     'coverage',
     '**/*.js', // compiled output; we lint TS source
   ],
+  overrides: [
+    {
+      files: ['.eslintrc.cjs'],
+      parserOptions: { project: null },
+    },
+  ],
   rules: {
     // Core TS rules
     '@typescript-eslint/no-unused-vars': [

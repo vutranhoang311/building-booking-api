@@ -1,8 +1,10 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+
 import { BookingService } from 'src/modules/booking/domain/service/booking.service';
-import { CreateBookingDto } from '../dto/create-booking.dto';
+
 import { BookingResponseDto } from '../dto/booking-response.dto';
+import { CreateBookingDto } from '../dto/create-booking.dto';
 
 @ApiTags('booking')
 @Controller('booking')

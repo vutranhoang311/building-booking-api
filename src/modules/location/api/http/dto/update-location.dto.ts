@@ -9,6 +9,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
+
 import { CreateLocationDto, LocationOpenDays } from "./create-location.dto";
 
 export class UpdateLocationDto extends PartialType(CreateLocationDto) {
