@@ -20,9 +20,9 @@ import {
 } from "@nestjs/swagger";
 
 import { LocationService } from "../../../domain/service/location.service";
+import { CreateLocationDto } from "../dto/create-location.dto";
 import { LocationResponseDto } from "../dto/location-response.dto";
 import { UpdateLocationDto } from "../dto/update-location.dto";
-import { CreateLocationDto } from "../dto/create-location.dto";
 
 @ApiTags("location")
 @Controller("location")

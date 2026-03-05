@@ -6,11 +6,12 @@ import {
 import { InjectRepository } from "@nestjs/typeorm";
 import dayjs from "dayjs";
 import { Repository } from "typeorm";
+
 import { Booking } from "src/entities/booking.entity";
 import { Location } from "src/entities/location.entity";
-import { LocationOpenDays } from "src/modules/location/api/http/dto/create-location.dto";
 import { BookingResponseDto } from "src/modules/booking/api/http/dto/booking-response.dto";
 import { CreateBookingDto } from "src/modules/booking/api/http/dto/create-booking.dto";
+import { LocationOpenDays } from "src/modules/location/api/http/dto/create-location.dto";
 
 @Injectable()
 export class BookingService {

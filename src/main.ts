@@ -2,10 +2,11 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { Logger } from 'nestjs-pino';
 import { DataSource } from 'typeorm';
+
 import { AppModule } from './app.module';
 import { setupSwagger } from './config/swagger.config';
-import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { Building } from './entities/building.entity';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

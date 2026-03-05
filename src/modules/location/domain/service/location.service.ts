@@ -6,7 +6,9 @@ import {
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+
 import { Building } from "src/entities/building.entity";
+
 import { Location as LocationEntity } from "../../../../entities/location.entity";
 import {
   CreateLocationDto,

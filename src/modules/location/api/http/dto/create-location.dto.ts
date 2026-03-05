@@ -10,6 +10,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
+
 import { IsTimeRange } from "../../../../../validations/is-time-range.validator";
 
 export enum LocationOpenDays {

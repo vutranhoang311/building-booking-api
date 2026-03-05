@@ -6,6 +6,7 @@ import {
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
+// eslint-disable-next-line import/no-named-as-default-member
 dayjs.extend(customParseFormat);
 
 export function IsTimeRange(validationOptions?: ValidationOptions) {
